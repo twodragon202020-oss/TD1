@@ -1,1 +1,256 @@
-<!DOCTYPE html><html style="height: 100%;"><body style="height: 100%; margin: 0;"><iframe src="https://copilotstudio.microsoft.com/environments/Default-9ef36566-f756-4f11-9c5f-307c10f409f9/bots/cre46_aicreativeagentteam_2UaUHr/webchat?__version__=2&enableFileAttachment=false&cliAgent=true" frameborder="0" style="width: 100%; height: 100%; border: 0;"></iframe></body></html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1c4d91" />
+  <title>학교업무 AI 도우미 | 교육행정 지원</title>
+  <style>
+    :root {
+      --navy: #163c73;
+      --blue: #2365bd;
+      --blue-light: #eaf3ff;
+      --text: #24354b;
+      --muted: #64748b;
+      --line: #dce5f0;
+      --bg: #f3f6fb;
+      --white: #ffffff;
+      --shadow: 0 7px 28px rgba(21, 55, 100, .07);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 100%; min-height: 100%; }
+    body {
+      font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+    button, a { font: inherit; }
+    button:focus-visible, a:focus-visible {
+      outline: 3px solid #62a7ff;
+      outline-offset: 3px;
+    }
+
+    .app { display: flex; flex-direction: column; min-height: 620px; height: 100vh; height: 100dvh; }
+    .top-line { height: 5px; flex-shrink: 0; background: linear-gradient(90deg, #12498f 0%, #2675cf 64%, #35b2c3 100%); }
+    .site-header {
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      flex-shrink: 0; min-height: 79px; padding: 14px max(24px, calc((100vw - 1512px) / 2));
+      background: var(--white); border-bottom: 1px solid var(--line);
+    }
+    .identity { display: flex; align-items: center; gap: 13px; min-width: 0; }
+    .brand-symbol {
+      display: grid; place-items: center; flex-shrink: 0;
+      width: 46px; height: 46px; border-radius: 13px;
+      background: linear-gradient(145deg, #174c96, #2c83d2);
+      color: white; font-size: 18px; font-weight: 850; letter-spacing: -.8px;
+      box-shadow: 0 4px 11px rgba(30, 87, 167, .18);
+    }
+    .brand-text strong { display: block; font-size: 20px; letter-spacing: -.9px; color: #173c70; }
+    .brand-text small { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; }
+    .header-side { display: flex; align-items: center; gap: 14px; }
+    .header-label { color: #718096; font-size: 12px; white-space: nowrap; }
+    .top-link {
+      display: inline-flex; align-items: center; gap: 7px; padding: 10px 14px;
+      color: #1c559e; border: 1px solid #cbdcf1; border-radius: 9px;
+      background: #fff; text-decoration: none; font-weight: 700; font-size: 13px;
+      white-space: nowrap; transition: background .15s;
+    }
+    .top-link:hover { background: #f1f7ff; }
+
+    .breadcrumb-bar { flex-shrink: 0; background: #f9fbfe; border-bottom: 1px solid #e3ebf5; }
+    .breadcrumb {
+      width: min(100%, 1560px); margin: auto; padding: 11px 24px;
+      color: #77859a; font-size: 12px;
+    }
+    .breadcrumb b { color: #2c5997; font-weight: 700; }
+    .breadcrumb span { margin: 0 8px; color: #abb7c6; }
+
+    .workspace {
+      display: grid; grid-template-columns: 246px minmax(0, 1fr);
+      gap: 22px; flex: 1; min-height: 0;
+      width: min(100%, 1560px); margin: 0 auto; padding: 22px 24px 24px;
+    }
+    .sidebar { display: flex; flex-direction: column; gap: 16px; min-height: 0; }
+    .side-card, .chat-panel { background: var(--white); border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .side-card { border-radius: 14px; overflow: hidden; }
+    .side-heading {
+      padding: 18px 19px; border-bottom: 1px solid var(--line);
+      font-size: 15px; font-weight: 800; color: var(--navy);
+    }
+    .active-menu {
+      display: flex; align-items: center; gap: 10px; margin: 13px 12px;
+      padding: 14px 13px; border-radius: 9px;
+      color: #1556a2; font-size: 14px; font-weight: 750;
+      background: #eaf3ff; border-left: 4px solid #2471cc;
+    }
+    .menu-icon { font-size: 17px; }
+    .guide { padding: 2px 18px 18px; }
+    .guide-step { display: flex; align-items: flex-start; gap: 10px; margin-top: 17px; }
+    .guide-step i {
+      display: grid; place-items: center; flex-shrink: 0;
+      width: 24px; height: 24px; border-radius: 7px;
+      font-style: normal; font-size: 12px; font-weight: 800;
+      color: #1c62b1; background: #eaf3ff;
+    }
+    .guide-step p { margin: 2px 0 0; line-height: 1.6; font-size: 12px; color: #56677b; }
+    .notice {
+      padding: 17px 18px; background: #f6f9fe;
+      border: 1px solid #d9e6f6; border-radius: 14px;
+    }
+    .notice strong { display: block; margin-bottom: 8px; font-size: 13px; color: #204d86; }
+    .notice p { margin: 0; line-height: 1.7; font-size: 12px; color: #56677b; }
+    .sidebar-caption { margin: auto 4px 0; line-height: 1.6; color: #94a0af; font-size: 11px; }
+
+    .chat-panel {
+      display: flex; flex-direction: column; min-height: 0;
+      overflow: hidden; border-radius: 16px;
+    }
+    .chat-heading {
+      display: flex; justify-content: space-between; align-items: center; gap: 15px;
+      padding: 18px 22px; flex-shrink: 0; border-bottom: 1px solid var(--line);
+      background: linear-gradient(105deg, #ffffff 30%, #f3f8ff 100%);
+    }
+    .heading-left { display: flex; align-items: center; gap: 13px; min-width: 0; }
+    .chat-icon {
+      display: grid; place-items: center; flex-shrink: 0;
+      width: 42px; height: 42px; border-radius: 12px;
+      background: #e6f1ff; color: #2366bd;
+    }
+    .chat-heading h1 { margin: 0; font-size: 19px; letter-spacing: -.7px; color: #1c437c; }
+    .chat-heading p { margin: 6px 0 0; font-size: 12px; color: #6c7d90; }
+    .actions { display: flex; align-items: center; gap: 8px; }
+    .refresh-btn {
+      padding: 10px 13px; border: 1px solid #cbdcf1; border-radius: 9px;
+      color: #235a9f; background: #fff; cursor: pointer;
+      font-size: 12px; font-weight: 750; white-space: nowrap;
+    }
+    .refresh-btn:hover { background: #edf5ff; }
+    .chat-content { flex: 1; min-height: 0; background: #fff; }
+    .chat-content iframe { width: 100%; height: 100%; display: block; border: 0; background: white; }
+    .chat-footer {
+      display: flex; justify-content: space-between; gap: 12px;
+      padding: 10px 20px; flex-shrink: 0; border-top: 1px solid #e7edf5;
+      background: #fbfcfe; font-size: 11px; line-height: 1.5; color: #7b8899;
+    }
+    .chat-footer b { color: #3f6b9f; }
+
+    @media (max-width: 1000px) {
+      .workspace { grid-template-columns: 210px minmax(0, 1fr); gap: 14px; padding: 16px; }
+      .header-label { display: none; }
+    }
+    @media (max-width: 760px) {
+      .app { min-height: 520px; }
+      .site-header { min-height: 72px; padding: 12px 16px; }
+      .brand-symbol { width: 42px; height: 42px; }
+      .brand-text strong { font-size: 17px; }
+      .brand-text small { font-size: 10px; }
+      .top-link { padding: 9px 10px; font-size: 12px; }
+      .breadcrumb { padding: 9px 16px; }
+      .workspace { display: flex; padding: 12px; }
+      .sidebar { display: none; }
+      .chat-panel { flex: 1; }
+      .chat-heading { padding: 12px 14px; }
+      .chat-heading h1 { font-size: 16px; }
+      .chat-heading p { font-size: 11px; }
+      .chat-icon { width: 36px; height: 36px; }
+      .refresh-btn { padding: 9px 10px; }
+      .chat-footer { padding: 9px 12px; font-size: 10px; }
+      .chat-footer span:last-child { display: none; }
+    }
+    @media (max-width: 420px) {
+      .brand-text small { display: none; }
+      .top-link { font-size: 0; padding: 9px 10px; }
+      .top-link::before { content: "↗"; font-size: 16px; }
+      .chat-heading p { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="top-line" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="identity">
+        <div class="brand-symbol" aria-hidden="true">AI</div>
+        <div class="brand-text">
+          <strong>학교업무 AI 도우미</strong>
+          <small>교육행정 업무지원 · 스마트 상담 서비스</small>
+        </div>
+      </div>
+      <div class="header-side">
+        <span class="header-label">교직원을 위한 AI 업무지원</span>
+        <a class="top-link" id="openExternal" target="_blank" rel="noopener noreferrer" aria-label="AI 상담을 새 창에서 열기">새 창에서 열기 ↗</a>
+      </div>
+    </header>
+
+    <div class="breadcrumb-bar">
+      <nav class="breadcrumb" aria-label="현재 위치">홈 <span>›</span> AI 업무지원 <span>›</span> <b>AI 상담</b></nav>
+    </div>
+
+    <main class="workspace">
+      <aside class="sidebar" aria-label="서비스 안내">
+        <section class="side-card">
+          <div class="side-heading">AI 업무지원</div>
+          <div class="active-menu"><span class="menu-icon" aria-hidden="true">▣</span> AI 상담 도우미</div>
+        </section>
+        <section class="side-card">
+          <div class="side-heading">이용 방법</div>
+          <div class="guide">
+            <div class="guide-step"><i>01</i><p>궁금한 학교업무 내용을 채팅창에 입력하세요.</p></div>
+            <div class="guide-step"><i>02</i><p>AI가 제시한 답변과 안내사항을 확인하세요.</p></div>
+            <div class="guide-step"><i>03</i><p>중요한 결정 전에는 관련 공문과 지침을 재확인하세요.</p></div>
+          </div>
+        </section>
+        <div class="notice">
+          <strong>ⓘ 개인정보 보호 안내</strong>
+          <p>학생 이름, 주민등록번호 등 민감한 정보나 업무상 비공개 자료는 채팅에 입력하지 마세요.</p>
+        </div>
+        <p class="sidebar-caption">NEIS의 화면 구성에서 영감을 얻은 비공식 디자인입니다. 나이스 공식 서비스 또는 연계 시스템이 아닙니다.</p>
+      </aside>
+
+      <section class="chat-panel" aria-label="AI 상담 영역">
+        <div class="chat-heading">
+          <div class="heading-left">
+            <div class="chat-icon" aria-hidden="true">
+              <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a8 8 0 0 1-8 8 8.5 8.5 0 0 1-3.5-.8L4 20l1.3-4.2A8 8 0 1 1 20 11.5Z"/><path d="M8.5 11.5h7"/><path d="M8.5 14.5h4.5"/></svg>
+            </div>
+            <div>
+              <h1>AI 상담 도우미</h1>
+              <p>학교 현장의 다양한 업무를 편리하게 질문해 보세요.</p>
+            </div>
+          </div>
+          <div class="actions">
+            <button type="button" class="refresh-btn" id="refreshChat" title="현재 AI 상담창 다시 불러오기">↻ 새로고침</button>
+          </div>
+        </div>
+
+        <div class="chat-content">
+          <iframe
+            id="copilotChat"
+            title="Copilot Studio AI 상담창"
+            src="https://copilotstudio.microsoft.com/environments/Default-9ef36566-f756-4f11-9c5f-307c10f409f9/bots/cre46_aicreativeagentteam_2UaUHr/webchat?__version__=2&amp;enableFileAttachment=false&amp;cliAgent=true"
+            allow="clipboard-read; clipboard-write"
+            referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
+        </div>
+        <footer class="chat-footer">
+          <span><b>안내</b> AI 답변은 참고용이며, 실제 업무는 최신 지침에 따라 처리하세요.</span>
+          <span>Powered by Microsoft Copilot Studio</span>
+        </footer>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const chatFrame = document.getElementById('copilotChat');
+    document.getElementById('openExternal').href = chatFrame.src;
+    document.getElementById('refreshChat').addEventListener('click', () => {
+      // 재접속 시 기존 채팅 대화가 초기화될 수 있습니다.
+      if (confirm('AI 상담창을 새로고침할까요? 진행 중인 대화가 초기화될 수 있습니다.')) {
+        chatFrame.src = chatFrame.src;
+      }
+    });
+  </script>
+</body>
+</html>
